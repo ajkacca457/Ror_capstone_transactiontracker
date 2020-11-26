@@ -4,7 +4,7 @@ class GroupsController < ApplicationController
   # GET /groups
   # GET /groups.json
   def index
-    @groups = Group.order(name: :asc).all
+    @groups = Group.order(title: :asc).all
   end
 
   # GET /groups/1
