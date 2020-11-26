@@ -43,6 +43,7 @@ $ cd <folder>
 $ git clone `https://github.com/ajkacca457/Ror_capstone_transactiontracker.git`
 $ cd Ror_capstone_transactiontracker
 $ bundle install
+$ If styling doest work then run "Yarn add bootstrap jquery popper.js"
 $ yarn install --check-files if yarn is not updated
 $ Run `rails db:migrate` to create necessary tables in database
 $ Run `rails server` to see the user interface.
