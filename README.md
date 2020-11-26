@@ -49,6 +49,12 @@ $ Run `rails server` to see the user interface.
 $ Open your browser and go to http://localhost:3000/
 ```
 
+### Run tests
+
+```
+    rpsec --format documentation
+```
+
 # Authors
 
 👤 **Avijit Karmaker**
