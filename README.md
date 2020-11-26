@@ -21,6 +21,7 @@ In this project I developed a simple event app with authentication:
 - Any user who signed up and logged in can track their grouped and non grouped transactions.
 - Transactions view pages displays transaction it's title, date and amount.
 - Both group and non group transaction view page display the total amount of transaction.
+- group show page displays all the associated transactions with the name of transaction author.
 
 ## Built With
 

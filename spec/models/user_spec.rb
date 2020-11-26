@@ -12,7 +12,6 @@ RSpec.describe User, type: :model do
     it 'has many groups ' do
       expect(User.reflect_on_association(:groups).macro).to be :has_many
     end
-
   end
 
   context 'Validation tests' do
