@@ -28,9 +28,15 @@ class TransactionsController < ApplicationController
     respond_to do |format|
       if @transaction.save
         if @transaction.group_id.nil?
-          format.html { redirect_to '/etransactions', notice: 'Transaction was successfully created.' }
+          format.html do
+            redirect_to '/etransactions',
+                        notice: 'Transaction was successfully created.'
+          end
         else
-          format.html { redirect_to '/transactions', notice: 'Transaction was successfully created.' }
+          format.html do
+            redirect_to '/transactions',
+                        notice: 'Transaction was successfully created.'
+          end
         end
       else
         format.html { render :new }
@@ -45,9 +51,15 @@ class TransactionsController < ApplicationController
     respond_to do |format|
       if @transaction.update(transaction_params)
         if @transaction.group_id.nil?
-          format.html { redirect_to '/etransactions', notice: 'Transaction was successfully created.' }
+          format.html do
+            redirect_to '/etransactions',
+                        notice: 'Transaction was successfully created.'
+          end
         else
-          format.html { redirect_to '/transactions', notice: 'Transaction was successfully created.' }
+          format.html do
+            redirect_to '/transactions',
+                        notice: 'Transaction was successfully created.'
+          end
         end
       else
         format.html { render :edit }
@@ -62,11 +74,16 @@ class TransactionsController < ApplicationController
     @transaction.destroy
     respond_to do |format|
       if @transaction.group_id.nil?
-        format.html { redirect_to etransactions_url, notice: 'Transaction was successfully destroyed.' }
-        format.json { head :no_content }
+        format.html do
+          redirect_to etransactions_url,
+                      notice: 'Transaction was successfully destroyed.'
+        end
       else
-        format.html { redirect_to transactions_url, notice: 'Transaction was successfully destroyed.' }
-        format.json { head :no_content }
+        format.html do
+          redirect_to transactions_url,
+                      notice: 'Transaction was successfully destroyed.'
+        end
+
       end
     end
   end
