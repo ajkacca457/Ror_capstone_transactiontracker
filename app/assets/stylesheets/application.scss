@@ -11,7 +11,7 @@ $fa-font-path: '@fortawesome/fontawesome-free/webfonts';
 
 body {
   font-family: 'Noto Serif', serif;
-  font-size:100%;
+  font-size: 100%;
 }
 
 .w-title {
@@ -19,7 +19,7 @@ body {
 }
 
 .m-btn {
-  font-size:85%;
+  font-size: 85%;
   border-radius: 5px;
 }
 
@@ -63,6 +63,7 @@ body {
   body {
     background-color: #3778c2;
   }
+
   .msg {
     margin: 20px auto;
   }
@@ -102,9 +103,7 @@ body {
 }
 
 @media only screen and (max-width: 350px) {
-
-.m-btn {
-  font-size: 70%;
-}
-
+  .m-btn {
+    font-size: 70%;
+  }
 }

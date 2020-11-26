@@ -12,7 +12,7 @@
         <h5><%= number_to_currency(gtransaction.amount)%></h5>
         </div>
         <hr>
-        <h5><%= gtransaction.group.title.capitalize%></h5>
+        <p class="small text-secondary">Transaction by: <%= gtransaction.user.username.capitalize%></p>
       <hr>
 
       <div class="infocont d-flex justify-content-between">
