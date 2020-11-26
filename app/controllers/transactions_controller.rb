@@ -4,7 +4,8 @@ class TransactionsController < ApplicationController
   # GET /transactions
   # GET /transactions.json
   def index
-    @transactions = Transaction.all
+    @transactions =  current_user.transactions.grouped
+    @transaction_sum = current_user.transactions.grouped.sum(:amount)
   end
 
   # GET /transactions/1
@@ -24,12 +25,15 @@ class TransactionsController < ApplicationController
   # POST /transactions
   # POST /transactions.json
   def create
-    @transaction = Transaction.new(transaction_params)
+    @transaction = current_user.transactions.build(transaction_params)
 
     respond_to do |format|
       if @transaction.save
-        format.html { redirect_to @transaction, notice: 'Transaction was successfully created.' }
-        format.json { render :show, status: :created, location: @transaction }
+        if @transaction.group_id.nil?
+          format.html { redirect_to '/etransactions', notice: 'Transaction was successfully created.' }
+        else
+          format.html { redirect_to '/transactions', notice: 'Transaction was successfully created.' }
+        end
       else
         format.html { render :new }
         format.json { render json: @transaction.errors, status: :unprocessable_entity }
@@ -56,10 +60,23 @@ class TransactionsController < ApplicationController
   def destroy
     @transaction.destroy
     respond_to do |format|
+      if @transaction.group_id.nil?
+      format.html { redirect_to etransactions_url, notice: 'Transaction was successfully destroyed.' }
+      format.json { head :no_content }
+    else
       format.html { redirect_to transactions_url, notice: 'Transaction was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
+  end
+
+def etransaction
+
+  @etransactions =  current_user.transactions.non_grouped
+  @etransaction_sum = current_user.transactions.non_grouped.sum(:amount)
+
+end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.
@@ -69,6 +86,6 @@ class TransactionsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def transaction_params
-      params.require(:transaction).permit(:title, :amount, :user_id)
+      params.require(:transaction).permit(:title, :amount, :user_id,:group_id)
     end
 end
