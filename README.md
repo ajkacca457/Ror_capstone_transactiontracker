@@ -3,9 +3,12 @@
 > This is a Microverse Ruby on rails capstone project that allows users to track their regular day to day transactions. A user can create an account and then can use this app immediately. this app allows user to create different transactions, create groups. An user can put his transactions into several groups of his choice. User can see all the transactions that belongs to a group and those without groups separately. User can also track all the transactions that he or she put on specific groups.  
 restricted from using the app until they sign up and log in.
 
-![screenshot]()
-![screenshot]()
-![screenshot]()
+![screenshot](./app/assets/images/interface1.png)
+![screenshot](./app/assets/images/interface2.png)
+![screenshot](./app/assets/images/interface3.png)
+![screenshot](./app/assets/images/interface4.png)
+![screenshot](./app/assets/images/interface5.png)
+![screenshot](./app/assets/images/interface6.png)
 
 ## Features
 In this project I developed a simple event app with authentication:
