@@ -1,25 +1,36 @@
-<h2>Log in</h2>
+<div class="text-white text-center py-2 mt-5">
+    <h3>Sign In <i class="fas fa-sign-in-alt fa-1x"></i></h3>
+  </div>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+<div class="form-group">
+    <div class="input-group mb-2">
+        <div class="input-group-prepend">
+            <div class="input-group-text"><i class="fas fa-at text-info"></i></div>
+        </div>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email",class:"form-control",id:"email",placeholder:"Email" %>
+    </div>
+</div>
 
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
+      <div class="form-group">
+          <div class="input-group mb-2">
+              <div class="input-group-prepend">
+                  <div class="input-group-text"><i class="fas fa-key text-info"></i></div>
+              </div>
+              <%= f.password_field :password, autocomplete: "current-password",class:"form-control",placeholder:"Enter your Password"%>
+          </div>
+      </div>
+
 
   <% if devise_mapping.rememberable? %>
     <div class="field">
       <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+      <%= f.label :remember_me%>
     </div>
   <% end %>
 
-  <div class="actions">
-    <%= f.submit "Log in" %>
+  <div class="text-center">
+    <%= f.submit "Sign in",class:"btn btn-warning btn-block rounded-0 py-2 mb-3" %>
   </div>
 <% end %>
 

@@ -1,29 +1,51 @@
-<h2>Sign up</h2>
+<div class="text-white text-center py-2 mt-5">
+           <h3>Sign Up <i class="fas fa-sign-in-alt fa-1x"></i></h3>
+       </div>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+  <div class="form-group">
+         <div class="input-group mb-2">
+             <div class="input-group-prepend">
+                 <div class="input-group-text"><i class="fas fa-user text-info"></i></div>
+             </div>
+             <%= f.text_field :username, autofocus: true, autocomplete: "username",class:"form-control",id:"username",placeholder:"username" %>
+         </div>
+     </div>
 
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
+     <div class="form-group">
+                 <div class="input-group mb-2">
+                     <div class="input-group-prepend">
+                         <div class="input-group-text"><i class="fas fa-at text-info"></i></div>
+                     </div>
+                     <%= f.email_field :email, autofocus: true, autocomplete: "email",class:"form-control",id:"email",placeholder:"Email" %>
+                 </div>
+             </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
 
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
+             <div class="form-group">
+                           <div class="input-group mb-2">
+                               <div class="input-group-prepend">
+                                   <div class="input-group-text"><i class="fas fa-key text-info"></i></div>
+                               </div>
+                               <%= f.password_field :password, autocomplete: "new-password",class:"form-control",placeholder:"Enter your Password" %>
+                           </div>
+                       </div>
+
+                       <div class="form-group">
+                                   <div class="input-group mb-2">
+                                       <div class="input-group-prepend">
+                                           <div class="input-group-text"><i class="fas fa-key text-info"></i></div>
+                                       </div>
+                                       <%= f.password_field :password_confirmation, autocomplete: "new-password",class:"form-control",placeholder:"Re-enter password" %>
+                                   </div>
+                               </div>
+
+                               <div class="text-center">
+                                          <%= f.submit "Sign up",class:"btn btn-warning btn-block rounded-0 py-2 mb-3" %>
+                                        </div>
+
 <% end %>
 
 <%= render "devise/shared/links" %>
