@@ -4,12 +4,14 @@ class GroupsController < ApplicationController
   # GET /groups
   # GET /groups.json
   def index
-    @groups = Group.all
+    @groups = Group.order(name: :asc).all
   end
 
   # GET /groups/1
   # GET /groups/1.json
   def show
+    @group = Group.find(params[:id])
+   @gtransactions = @group.transactions
   end
 
   # GET /groups/new
