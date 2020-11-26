@@ -13,15 +13,17 @@
 
   <div class="field">
     <%= form.label :title %>
-    <%= form.text_field :title %>
+    <%= form.text_field :title, class:"w-100 mb-2" %>
   </div>
 
   <div class="field">
     <%= form.label :icon %>
-    <%= form.text_field :icon %>
+    <%= form.text_field :icon, class:"w-100 mb-5" %>
   </div>
 
+
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit "Submit",class:"btn btn-warning btn-block rounded-0 py-2 mb-3" %>
   </div>
+
 <% end %>

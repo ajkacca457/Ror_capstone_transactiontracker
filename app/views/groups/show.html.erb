@@ -1,14 +1,31 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Title:</strong>
-  <%= @group.title %>
-</p>
+  <h5 class="text-center"><%= @group.title.capitalize %></h5>
 
-<p>
-  <strong>Icon:</strong>
-  <%= @group.icon %>
-</p>
+  <div class="container2 px-0 py-2 px-1 overflow-auto my-2">
 
-<%= link_to 'Edit', edit_group_path(@group) %> |
-<%= link_to 'Back', groups_path %>
+  <% @gtransactions.each do |gtransaction| %>
+  <div class="card mb-3">
+    <div class="card-body text-primary">
+      <div class="d-flex justify-content-between">
+        <h5><%= gtransaction.title.capitalize%></h5>
+        <h5><%= number_to_currency(gtransaction.amount)%></h5>
+        </div>
+        <hr>
+        <h5><%= gtransaction.group.title.capitalize%></h5>
+      <hr>
+
+      <div class="infocont d-flex justify-content-between">
+      <p class="text-secondary small"><%= gtransaction.created_at.strftime("%b %d, %Y") %></p>
+        <div class="btns">
+          <%= link_to '<i class="fas fa-edit mr-3"></i>'.html_safe, edit_transaction_path(gtransaction), class:"text-dark"%></td>
+          <%= link_to '<i class="fas fa-trash"></i>'.html_safe, gtransaction, method: :delete, data: { confirm: 'Are you sure?'}, class:"text-dark" %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<% end %>
+</div>
+
+<%= link_to ' <i class="fas fa-arrow-left"></i> Back'.html_safe, groups_path,class:"text-white bg-dark px-2 py-1" %>
