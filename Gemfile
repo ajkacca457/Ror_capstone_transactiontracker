@@ -3,6 +3,8 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.7.2'
 
+gem 'simple_form'
+
 gem 'devise'
 
 gem 'rubocop', '~>0.81.0'

@@ -46,8 +46,11 @@ class TransactionsController < ApplicationController
   def update
     respond_to do |format|
       if @transaction.update(transaction_params)
-        format.html { redirect_to @transaction, notice: 'Transaction was successfully updated.' }
-        format.json { render :show, status: :ok, location: @transaction }
+        if @transaction.group_id.nil?
+          format.html { redirect_to '/etransactions', notice: 'Transaction was successfully created.' }
+        else
+          format.html { redirect_to '/transactions', notice: 'Transaction was successfully created.' }
+        end
       else
         format.html { render :edit }
         format.json { render json: @transaction.errors, status: :unprocessable_entity }

@@ -1,32 +1,30 @@
-<%= form_with(model: transaction, local: true) do |form| %>
-  <% if transaction.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(transaction.errors.count, "error") %> prohibited this transaction from being saved:</h2>
+<%= simple_form_for(@transaction) do |f| %>
 
-      <ul>
-        <% transaction.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
+<% if transaction.errors.any? %>
+  <div id="error_explanation" class="bg-danger py-2 px-2 my-2">
+    <h4><%= pluralize(transaction.errors.count, "error") %> prohibited this transaction from being saved:</h4>
+    <ul>
+      <% transaction.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+    <div class="field mb-3">
+      <%= f.label :title %>
+      <%= f.text_field :title, class:"w-100" %>
     </div>
-  <% end %>
 
-  <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title %>
-  </div>
+    <div class="field mb-3">
+      <%= f.label :amount %>
+      <%= f.number_field :amount, class:"w-100" %>
+    </div>
 
-  <div class="field">
-    <%= form.label :amount %>
-    <%= form.number_field :amount %>
-  </div>
+    <div class="field mb-3">
+      <%= f.association :group ,required: false, include_blank: "",input_html: { class: "col-md-12 group"},label_html: { class: 'd-block'}, id:"group"%>
+    </div>
 
-  <div class="field">
-    <%= form.label :user_id %>
-    <%= form.text_field :user_id %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+    <div class="actions">
+      <%= f.submit "Submit",class:"btn btn-warning btn-block rounded-0 py-2 mb-3" %>
+    </div>
 <% end %>
