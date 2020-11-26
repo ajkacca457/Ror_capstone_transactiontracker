@@ -1,17 +1,16 @@
 class TransactionsController < ApplicationController
-  before_action :set_transaction, only: [:show, :edit, :update, :destroy]
+  before_action :set_transaction, only: %i[show edit update destroy]
 
   # GET /transactions
   # GET /transactions.json
   def index
-    @transactions =  current_user.transactions.grouped
+    @transactions = current_user.transactions.grouped
     @transaction_sum = current_user.transactions.grouped.sum(:amount)
   end
 
   # GET /transactions/1
   # GET /transactions/1.json
-  def show
-  end
+  def show; end
 
   # GET /transactions/new
   def new
@@ -19,8 +18,7 @@ class TransactionsController < ApplicationController
   end
 
   # GET /transactions/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /transactions
   # POST /transactions.json
@@ -64,31 +62,29 @@ class TransactionsController < ApplicationController
     @transaction.destroy
     respond_to do |format|
       if @transaction.group_id.nil?
-      format.html { redirect_to etransactions_url, notice: 'Transaction was successfully destroyed.' }
-      format.json { head :no_content }
-    else
-      format.html { redirect_to transactions_url, notice: 'Transaction was successfully destroyed.' }
-      format.json { head :no_content }
+        format.html { redirect_to etransactions_url, notice: 'Transaction was successfully destroyed.' }
+        format.json { head :no_content }
+      else
+        format.html { redirect_to transactions_url, notice: 'Transaction was successfully destroyed.' }
+        format.json { head :no_content }
+      end
     end
   end
+
+  def etransaction
+    @etransactions = current_user.transactions.non_grouped
+    @etransaction_sum = current_user.transactions.non_grouped.sum(:amount)
   end
-
-def etransaction
-
-  @etransactions =  current_user.transactions.non_grouped
-  @etransaction_sum = current_user.transactions.non_grouped.sum(:amount)
-
-end
-
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_transaction
-      @transaction = Transaction.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def transaction_params
-      params.require(:transaction).permit(:title, :amount, :user_id,:group_id)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_transaction
+    @transaction = Transaction.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def transaction_params
+    params.require(:transaction).permit(:title, :amount, :user_id, :group_id)
+  end
 end
