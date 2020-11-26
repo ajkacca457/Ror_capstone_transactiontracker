@@ -10,6 +10,11 @@ restricted from using the app until they sign up and log in.
 ![screenshot](./app/assets/images/interface5.png)
 ![screenshot](./app/assets/images/interface6.png)
 
+## Live Demo
+
+[Social Media](https://quiet-cove-21395.herokuapp.com/users/sign_in)
+
+
 ## Features
 In this project I developed a simple event app with authentication:
 
