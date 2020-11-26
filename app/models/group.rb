@@ -1,5 +1,5 @@
 class Group < ApplicationRecord
-  validates :title, presence: true, uniqueness: true
+  validates :title, presence: true
   validates :icon, presence: true
 
   belongs_to :user
