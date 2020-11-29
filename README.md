@@ -9,6 +9,10 @@ restricted from using the app until they sign up and log in.
 ![screenshot](./app/assets/images/interface4.png)
 ![screenshot](./app/assets/images/interface5.png)
 ![screenshot](./app/assets/images/interface6.png)
+![screenshot](./app/assets/images/interface7.png)
+![screenshot](./app/assets/images/interface8.png)
+![screenshot](./app/assets/images/interface9.png)
+
 
 ## Live Demo
 
