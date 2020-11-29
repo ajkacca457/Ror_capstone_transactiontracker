@@ -1,23 +1,46 @@
 require 'rails_helper'
 
-# rspec spec/views/user_spec.rb
-RSpec.describe 'Create a transaction', type: :system do
-  let(:user) do
-    User.create(username: 'mytest3', email: 'testing3@gmail.com',
-                password: 'testing3', password_confirmation: 'testing3')
+RSpec.feature 'Transactions', type: :feature do
+  it 'checks content when a transaction is created' do
+    visit '/users/sign_up'
+    fill_in 'username', with: 'testbot'
+    fill_in 'Email', with: 'testbot1@gmail.com'
+    fill_in 'Enter your Password', with: 'testingbot'
+    fill_in 'Re-enter password', with: 'testingbot'
+    click_button 'Sign up'
+    find('a', text: ' Create New Transaction').click
+    fill_in('Title', with: 'this is an example post')
+    fill_in 'Amount', with: '200'
+    click_on('Submit')
+    expect(page).to have_content('External Transactions')
   end
 
-  describe 'create transaction' do
-    it 'creats a transaction' do
-      visit new_user_session_path
-      fill_in 'Email', with: user.email
-      fill_in 'Enter your Password', with: user.password
-      click_button 'Sign in'
-      find('a', text: ' Create New Transaction').click
-      fill_in('Title', with: 'this is an example post')
-      fill_in 'Amount', with: '200'
-      click_on('Submit')
-      expect(page).to have_content('External Transactions')
-    end
+  it 'checks transaction wont be created if title blank' do
+    visit '/users/sign_up'
+    fill_in 'username', with: 'testbot'
+    fill_in 'Email', with: 'testbot1@gmail.com'
+    fill_in 'Enter your Password', with: 'testingbot'
+    fill_in 'Re-enter password', with: 'testingbot'
+    click_button 'Sign up'
+    find('a', text: ' Create New Transaction').click
+    fill_in('Title', with: '')
+    fill_in 'Amount', with: '200'
+    click_on('Submit')
+    expect(page).to have_content('Title is too short (minimum is 10 characters)')
   end
-end
+
+  it 'checks transaction wont be created if amount blank' do
+    visit '/users/sign_up'
+    fill_in 'username', with: 'testbot'
+    fill_in 'Email', with: 'testbot1@gmail.com'
+    fill_in 'Enter your Password', with: 'testingbot'
+    fill_in 'Re-enter password', with: 'testingbot'
+    click_button 'Sign up'
+    find('a', text: ' Create New Transaction').click
+    fill_in('Title', with: 'my title')
+    fill_in 'Amount', with: ''
+    click_on('Submit')
+    expect(page).to have_content("Amount can't be blank")
+  end
+
+  end

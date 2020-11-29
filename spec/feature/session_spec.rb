@@ -1,20 +1,9 @@
 require 'rails_helper'
 
-RSpec.describe 'Session pages', type: :feature do
-  let(:user) do
-    User.create(username: 'mytest5', email: 'testing5@gmail.com',
-                password: 'testing5', password_confirmation: 'testing5')
-  end
-  scenario 'login' do
-    visit new_user_session_path
-    fill_in 'Email', with: user.email
-    fill_in 'Enter your Password', with: user.password
-    click_button 'Sign in'
-    expect(page).to have_content('Welcome back!')
-  end
+RSpec.feature 'Transactions', type: :feature do
 
-  scenario 'signup page' do
-    visit new_user_registration_path
+  it 'checks a user is created' do
+    visit '/users/sign_up'
     fill_in 'username', with: 'mytest5'
     fill_in 'Email', with: 'testing5@gmain.com'
     fill_in 'Enter your Password', with: 'testing5'
@@ -22,4 +11,19 @@ RSpec.describe 'Session pages', type: :feature do
     click_button 'Sign up'
     expect(page).to have_content('Welcome back!')
   end
-end
+
+  it 'checks a successful user login' do
+    visit '/users/sign_up'
+    fill_in 'username', with: 'mytest5'
+    fill_in 'Email', with: 'testing5@gmain.com'
+    fill_in 'Enter your Password', with: 'testing5'
+    fill_in 'Re-enter password', with: 'testing5'
+    click_button 'Sign up'
+    click_on 'log out'
+    visit 'sign_in'
+    fill_in 'Email', with: 'testing5@gmain.com'
+    fill_in 'Enter your Password', with: 'testing5'
+    click_button 'Sign in'
+    expect(page).to have_content('Welcome back!')
+  end
+  end

@@ -1,24 +1,30 @@
 require 'rails_helper'
 
-# rspec spec/views/user_spec.rb
-RSpec.describe 'Create a group', type: :system do
-  let(:user) do
-    User.create(username: 'mytest3', email: 'testing3@gmail.com',
-                password: 'testing3', password_confirmation: 'testing3')
+RSpec.feature 'Groups', type: :feature do
+  it 'checks a group is created' do
+    visit '/users/sign_up'
+    fill_in 'username', with: 'testbot'
+    fill_in 'Email', with: 'testbot1@gmail.com'
+    fill_in 'Enter your Password', with: 'testingbot'
+    fill_in 'Re-enter password', with: 'testingbot'
+    click_button 'Sign up'
+    find('a', text: ' Create New Transaction').click
+    click_on('Create group')
+    expect(page).to have_content('Create New Group')
   end
 
-  describe 'create group' do
-    it 'creats a group' do
-      visit new_user_session_path
-      fill_in 'Email', with: user.email
-      fill_in 'Enter your Password', with: user.password
-      click_button 'Sign in'
-      find('a', text: ' Create New Transaction').click
-      click_on('Create group')
-      fill_in('Title', with: 'this is another')
-      fill_in 'Icon', with: 'Ö'
-      click_on('Submit')
-      expect(page).to have_content('All Groups')
-    end
+  it 'checks a group is created' do
+    visit '/users/sign_up'
+    fill_in 'username', with: 'testbot'
+    fill_in 'Email', with: 'testbot1@gmail.com'
+    fill_in 'Enter your Password', with: 'testingbot'
+    fill_in 'Re-enter password', with: 'testingbot'
+    click_button 'Sign up'
+    find('a', text: ' Create New Transaction').click
+    click_on('Create group')
+    click_on('Submit')
+    expect(page).to have_content("Title can't be blank")
   end
+
+
 end
