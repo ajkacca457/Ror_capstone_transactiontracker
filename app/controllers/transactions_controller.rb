@@ -4,8 +4,8 @@ class TransactionsController < ApplicationController
   # GET /transactions
   # GET /transactions.json
   def index
-    @transactions = current_user.transactions.grouped
-    @transaction_sum = current_user.transactions.grouped.sum(:amount)
+    @transactions = Transaction.where(user_id:current_user).grouped
+    @transaction_sum = Transaction.where(user_id:current_user).grouped.sum(:amount)
   end
 
   # GET /transactions/1

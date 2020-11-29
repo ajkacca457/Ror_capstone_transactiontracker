@@ -3,5 +3,8 @@ class Group < ApplicationRecord
   validates :icon, presence: true
 
   belongs_to :user
-  has_many :transactions
+  has_many :transactions, dependent: :destroy
+
+  mount_uploader :icon, ImageUploader
+
 end
