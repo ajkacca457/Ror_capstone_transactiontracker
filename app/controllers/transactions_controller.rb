@@ -4,13 +4,9 @@ class TransactionsController < ApplicationController
   # GET /transactions
   # GET /transactions.json
   def index
-    @transactions = current_user.transactions.grouped
-    @transaction_sum = current_user.transactions.grouped.sum(:amount)
+    @transactions = Transaction.includes(:group).where(user_id: current_user).grouped
+    @transaction_sum = Transaction.where(user_id:current_user).grouped.sum(:amount)
   end
-
-  # GET /transactions/1
-  # GET /transactions/1.json
-  def show; end
 
   # GET /transactions/new
   def new
@@ -89,8 +85,8 @@ class TransactionsController < ApplicationController
   end
 
   def etransaction
-    @etransactions = current_user.transactions.non_grouped
-    @etransaction_sum = current_user.transactions.non_grouped.sum(:amount)
+    @etransactions = Transaction.where(user_id:current_user).non_grouped
+    @etransaction_sum = Transaction.where(user_id:current_user).non_grouped.sum(:amount)
   end
 
   private
