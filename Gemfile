@@ -6,7 +6,8 @@ ruby '2.7.2'
 gem 'simple_form'
 
 gem 'devise'
-
+gem 'carrierwave'
+gem 'cloudinary'
 gem 'rubocop', '~>0.81.0'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.3', '>= 6.0.3.4'

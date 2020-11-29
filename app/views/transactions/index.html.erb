@@ -17,9 +17,11 @@
           <h5><%= number_to_currency(transaction.amount)%></h5>
           </div>
           <hr>
-          <h5><%= transaction.group.title.capitalize%></h5>
-        <hr>
-
+          <div class="d-flex align-items-center">
+          <img src="<%=transaction.group.icon%>" class="size mr-3 rounded-circle"/>
+           <h5><%= transaction.group.title.capitalize%></h5>
+          </div>
+          <hr>
         <div class="infocont d-flex justify-content-between">
         <p class="text-secondary small"><%= transaction.created_at.strftime("%b %d, %Y") %></p>
           <div class="btns">
@@ -30,7 +32,6 @@
       </div>
     </div>
     <% end %>
-
 <br>
 </div>
 
