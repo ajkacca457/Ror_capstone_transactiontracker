@@ -16,7 +16,7 @@ restricted from using the app until they sign up and log in.
 
 ## Live Demo
 
-[Transaction tracker](https://quiet-cove-21395.herokuapp.com/users/sign_in)
+[Transaction tracker](https://pure-cliffs-17371.herokuapp.com/users/sign_in)
 
 
 ## Presentation
