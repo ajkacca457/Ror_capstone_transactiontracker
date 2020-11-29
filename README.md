@@ -21,7 +21,7 @@ restricted from using the app until they sign up and log in.
 
 ## Presentation
 
-[Loom Presentation](https://www.loom.com/share/d3f152edb82747d6829b2ac5241cc33f)
+[Loom Presentation](https://www.loom.com/share/c856ed56b53b4ba2a4578fe940264d1c)
 
 ## Features
 In this project I developed a simple event app with authentication:
