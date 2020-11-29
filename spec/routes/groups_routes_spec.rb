@@ -17,6 +17,5 @@ RSpec.describe GroupsController, type: :routing do
     it 'routes to #create' do
       expect(post: '/groups').to route_to('groups#create')
     end
-
   end
 end

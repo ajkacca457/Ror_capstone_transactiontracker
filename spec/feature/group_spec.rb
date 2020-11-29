@@ -25,6 +25,4 @@ RSpec.feature 'Groups', type: :feature do
     click_on('Submit')
     expect(page).to have_content("Title can't be blank")
   end
-
-
 end

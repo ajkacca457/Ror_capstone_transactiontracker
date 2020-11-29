@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.feature 'Transactions', type: :feature do
-
   it 'checks a user is created' do
     visit '/users/sign_up'
     fill_in 'username', with: 'mytest5'
@@ -26,4 +25,4 @@ RSpec.feature 'Transactions', type: :feature do
     click_button 'Sign in'
     expect(page).to have_content('Welcome back!')
   end
-  end
+end
