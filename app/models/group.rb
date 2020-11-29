@@ -6,5 +6,4 @@ class Group < ApplicationRecord
   has_many :transactions, dependent: :destroy
 
   mount_uploader :icon, ImageUploader
-
 end

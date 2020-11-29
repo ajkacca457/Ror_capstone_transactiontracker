@@ -4,7 +4,7 @@ class GroupsController < ApplicationController
   # GET /groups
   # GET /groups.json
   def index
-    @groups = Group.includes(:user,:transactions).where(user_id: current_user)
+    @groups = Group.includes(:user, :transactions).where(user_id: current_user)
   end
 
   # GET /groups/1
@@ -32,7 +32,6 @@ class GroupsController < ApplicationController
       end
     end
   end
-
 
   private
 
