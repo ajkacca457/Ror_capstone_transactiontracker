@@ -18,11 +18,6 @@ restricted from using the app until they sign up and log in.
 
 [Transaction tracker](https://pure-cliffs-17371.herokuapp.com/users/sign_in)
 
-
-## Presentation
-
-[Loom Presentation](https://www.loom.com/share/c856ed56b53b4ba2a4578fe940264d1c)
-
 ## Features
 In this project I developed a simple event app with authentication:
 
