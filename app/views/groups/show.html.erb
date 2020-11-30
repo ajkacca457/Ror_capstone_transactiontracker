@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<div class="d-flex align-items-center justify-content-center">
+  <img src="<%=@group.icon%>" class="size mr-2 rounded-circle"/>
+  <h5><%= @group.title.capitalize %></h5>
+</div>
+
+  <div class="container2 px-0 py-2 px-1 overflow-auto my-3">
+
+  <% @gtransactions.each do |gtransaction| %>
+  <div class="card mb-3">
+    <div class="card-body text-primary">
+      <div class="d-flex justify-content-between">
+        <h5><%= gtransaction.title.capitalize%></h5>
+        <h5><%= number_to_currency(gtransaction.amount)%></h5>
+        </div>
+        <hr>
+        <p class="small text-secondary">Transaction by: <%= gtransaction.user.username.capitalize%></p>
+      <hr>
+
+      <div class="infocont d-flex justify-content-between">
+      <p class="text-secondary small"><%= gtransaction.created_at.strftime("%b %d, %Y") %></p>
+        <div class="btns">
+          <%= link_to '<i class="fas fa-edit mr-3"></i>'.html_safe, edit_transaction_path(gtransaction), class:"text-dark"%></td>
+          <%= link_to '<i class="fas fa-trash"></i>'.html_safe, gtransaction, method: :delete, data: { confirm: 'Are you sure?'}, class:"text-dark" %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<% end %>
+</div>
+
+<%= link_to ' <i class="fas fa-arrow-left"></i> Back'.html_safe, groups_path,class:"text-white bg-dark px-2 py-1" %>

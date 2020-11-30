@@ -1,15 +1,29 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>RorCapstoneTransactiontracker</title>
+    <title>CapstoneTest</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <%= yield %>
+
+<div class="container mt-md-3">
+    <nav class="navbar navbar-expand-lg navbar-light bg-primary>
+      <%= link_to "<i class='fas fa-wallet text-white mr-2'></i><span class='text-white'> Transaction Tracker</span>".html_safe, root_path, class: 'text-white' %>
+
+      <div class="text-center mt-2 ml-auto">
+        <%= showbtns %>
+      </div>
+
+  </nav>
+</div>
+
+<div class="container p-3 text-white">
+  <%= yield %>
+</div>
   </body>
 </html>

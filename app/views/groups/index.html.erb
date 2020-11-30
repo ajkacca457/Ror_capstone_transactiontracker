@@ -1,0 +1,28 @@
+<p id="notice"><%= notice %></p>
+
+
+<h4 class="text-center">All Groups</h4>
+
+<div class="container2 px-0 py-2 px-1 overflow-auto">
+
+    <% @groups.each do |group| %>
+
+
+    <div class="card mb-1">
+      <div class="card-body text-primary d-flex justify-content-between">
+        <div class="d-flex align-items-center">
+          <img src="<%=group.icon%>" class="size mr-2 rounded-circle"/>
+          <h5><%= group.title.capitalize %></h5>
+          </div>
+      <div class="btns">
+      <%= link_to '<button class="btn-primary border-0"><i class="fas fa-chalkboard fa-1x text-white"></i></button>'.html_safe, group %>
+      </div>
+      </div>
+    </div>
+    <% end %>
+
+<br>
+</div>
+
+<%= link_to 'New Group', new_group_path, class:"bg-success text-white w-100 d-block mt-4 text-center py-2 mb-3" %>
+<%=link_to ' <i class="fas fa-home"></i> Home'.html_safe, user_path(current_user), class:"mr-3 bg-dark text-white text-center px-2 py-1 radius w-100"%>

@@ -1,0 +1,13 @@
+#config/cloudinary.yml
+development:
+  cloud_name: avijit
+  api_key: '515535111343289'
+  api_secret: TAXbCWUprMYphtUWcq1pEZaihfs
+  enhance_image_tag: true
+  static_file_support: false
+production:
+  cloud_name: avijit
+  api_key: '515535111343289'
+  api_secret: TAXbCWUprMYphtUWcq1pEZaihfs
+  enhance_image_tag: true
+  static_file_support: true

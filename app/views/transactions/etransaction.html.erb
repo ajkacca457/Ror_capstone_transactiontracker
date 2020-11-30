@@ -1,0 +1,38 @@
+<p id="notice"><%= notice %></p>
+
+
+<h4 class="text-center">External Transactions</h4>
+
+
+<div class="tamount text-dark text-center w-100 bg-warning py-2 border-bottom border-secondary">Total Amount: <%=number_to_currency(@etransaction_sum)%></div>
+<div class="container2 px-0 py-2 px-1 overflow-auto">
+
+    <% @etransactions.each do |etransaction| %>
+
+
+    <div class="card mb-1">
+      <div class="card-body text-primary">
+        <div class="d-flex justify-content-between">
+          <h5><%= etransaction.title.capitalize%></h5>
+          <h5><%= number_to_currency(etransaction.amount)%></h5>
+          </div>
+          <hr>
+
+          <div class="infocont d-flex justify-content-between">
+              <p class="text-secondary small"><%= etransaction.created_at.strftime("%b %d, %Y") %></p>
+              <div class="btns">
+            <%= link_to '<i class="fas fa-edit mr-3"></i>'.html_safe, edit_transaction_path(etransaction), class:"text-dark"%></td>
+            <%= link_to '<i class="fas fa-trash"></i>'.html_safe, etransaction, method: :delete, data: { confirm: 'Are you sure?'}, class:"text-dark" %>
+            </div>
+      </div>
+
+      </div>
+    </div>
+    <% end %>
+
+<br>
+</div>
+
+<%= link_to 'New Transaction', new_transaction_path, class:"bg-success text-white w-100 d-block mt-4 text-center py-2 mb-3" %>
+
+<%=link_to ' <i class="fas fa-home"></i> Home'.html_safe, user_path(current_user), class:"mr-3 bg-dark text-white text-center px-2 py-1 radius w-100"%>
